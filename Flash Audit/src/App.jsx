@@ -1,3 +1,4 @@
+import './index.css'
 import { useState } from 'react'
 import { LanguageProvider } from './contexts/LanguageContext'
 import DeckGrid from './components/DeckGrid'
