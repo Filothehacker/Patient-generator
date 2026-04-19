@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 
 export default function useStudySession(cards, shuffle = false) {
   const deck = useMemo(() => {
@@ -8,6 +8,11 @@ export default function useStudySession(cards, shuffle = false) {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
+
+  useEffect(() => {
+    setCurrentIndex(0)
+    setIsFlipped(false)
+  }, [shuffle])
 
   const isEnd = currentIndex >= deck.length
 
@@ -26,11 +31,6 @@ export default function useStudySession(cards, shuffle = false) {
     setCurrentIndex(i => i - 1)
   }
 
-  function restart() {
-    setCurrentIndex(0)
-    setIsFlipped(false)
-  }
-
   return {
     currentIndex,
     currentCard: deck[currentIndex] ?? null,
@@ -40,6 +40,5 @@ export default function useStudySession(cards, shuffle = false) {
     flip,
     next,
     prev,
-    restart,
   }
 }

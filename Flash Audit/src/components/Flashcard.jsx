@@ -1,6 +1,6 @@
 export default function Flashcard({ front, back, isFlipped, onFlip }) {
   return (
-    <div className="flashcard-scene" onClick={onFlip}>
+    <button type="button" className="flashcard-scene" onClick={onFlip}>
       <div className={`flashcard${isFlipped ? ' is-flipped' : ''}`} data-testid="flashcard">
         <div className="flashcard-face flashcard-front">
           <span className="card-hint">Domanda · Question</span>
@@ -13,6 +13,6 @@ export default function Flashcard({ front, back, isFlipped, onFlip }) {
           <span className="card-tap">continua → continue</span>
         </div>
       </div>
-    </div>
+    </button>
   )
 }

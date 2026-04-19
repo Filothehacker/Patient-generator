@@ -23,7 +23,7 @@ export default function Header({ showBack = false, onBack }) {
       <button
         className="lang-toggle"
         onClick={() => setLang(lang === 'it' ? 'en' : 'it')}
-        aria-label="Toggle language"
+        aria-label={lang === 'it' ? 'Switch to English' : "Passa all'italiano"}
       >
         {l.toggle}
       </button>

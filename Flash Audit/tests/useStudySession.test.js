@@ -44,12 +44,15 @@ test('isEnd is true when past last card', () => {
   expect(result.current.isEnd).toBe(true)
 })
 
-test('restart resets to beginning', () => {
-  const { result } = renderHook(() => useStudySession(cards))
+test('shuffle change resets to beginning', () => {
+  let shuffle = false
+  const { result, rerender } = renderHook(() => useStudySession(cards, shuffle))
   act(() => result.current.next())
   act(() => result.current.next())
   act(() => result.current.next())
-  act(() => result.current.restart())
+  expect(result.current.isEnd).toBe(true)
+  shuffle = true
+  rerender()
   expect(result.current.currentIndex).toBe(0)
   expect(result.current.isEnd).toBe(false)
 })
